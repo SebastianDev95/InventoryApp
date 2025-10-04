@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InventoryApp</title>
+  <link rel="stylesheet" href="{% static 'css/banner.css' %}">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="navbar">
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="{% static 'img/logo.png' %}" alt="Logo" class="logo-img">
+        <span class="logo-text">Stock</span>
+      </div>
+
+      <!-- Menú -->
+      <nav class="nav-links">
+        <a href="#" class="btn-outline">Registrar</a>
+
+        <a href="#" class="btn-outline">Iniciar Sesión</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h1>¿Sabes cuántos productos tienes en stock ahora mismo?</h1>
+        <p>
+          Ten la respuesta siempre a la mano. Centraliza tu catálogo, 
+          actualiza tu inventario en tiempo real y evita quedarte sin stock. Crea tu cuenta en segundos.
+        </p>
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary">Empieza a organizar gratis</a>
+          <a href="#" class="btn-link">Ingresar a mi cuenta →</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="{% static 'img/Dash.svg' %}" alt="Dashboard">
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+ 
+<section class="features">
+  <div class="container features-grid">
+    <!-- Columna izquierda -->
+    <div class="features-left">
+      <h2>Empieza a gestionar tu inventario</h2>
+      <p>
+        Hemos diseñado un proceso intuitivo para que puedas tener todo bajo control en cuestión de minutos,
+        sin necesidad de manuales complicados.
+      </p>
+      <a href="#" class="btn-link blue">Crea tu cuenta y pruébalo →</a>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="features-right">
+  <div class="feature-item">
+    <img src="{% static 'img/1.svg' %}" alt="Icono 1">
+    <h3>Crea Tu cuenta</h3>
+    <p>Regístrate gratis en menos de un minuto...</p>
+  </div>
+
+  <div class="feature-item">
+    <img src="{% static 'img/2.svg' %}" alt="Icono 2">
+    <h3>Carga los productos</h3>
+    <p>Añade tus productos uno por uno o importa tu catálogo completo desde un CSV...</p>
+  </div>
+
+  <div class="feature-item">
+    <img src="{% static 'img/3.svg' %}" alt="Icono 3">
+    <h3>Gestiona</h3>
+    <p>Actualiza tus cantidades, revisa tu stock disponible al instante...</p>
+  </div>
+
+  <div class="feature-item">
+    <img src="{% static 'img/4.svg' %}" alt="Icono 4">
+    <h3>Toma Control</h3>
+    <p>Toda tu información clara y ordenada para tomar mejores decisiones...</p>
+  </div>
+</div>
+
+</section>
+
+
+  <!-- BENEFICIOS -->
+<section class="benefits">
+  <div class="container">
+    <p class="subtitle">Funcionalidades</p>
+    <h2>Todo lo que necesitas para un inventario organizado.</h2>   
+
+    <div class="benefit-grid">
+      <div class="benefit-box">
+        <img src="{% static 'img/Icon1.svg' %}" alt="Control de stock">
+        <h3>Control de Stock</h3>
+        <p>Conoce exactamente cuántas unidades tienes de cada producto. Actualiza entradas y salidas al instante.</p>
+      </div>
+
+      <div class="benefit-box">
+        <img src="{% static 'img/Icon2.svg' %}" alt="Alertas de stock bajo">
+        <h3>Alertas de Stock Bajo</h3>
+        <p>Configura notificaciones automáticas para saber cuándo reabastecer un producto y nunca pierdas una venta.</p>
+      </div>
+
+      <div class="benefit-box">
+        <img src="{% static 'img/Icon3.svg' %}" alt="Catálogo centralizado">
+        <h3>Catálogo de Productos Centralizado</h3>
+        <p>Guarda toda la información importante (SKU, proveedor, precio) en un solo lugar accesible y ordenado.</p>
+      </div>
+
+      <div class="benefit-box">
+        <img src="{% static 'img/Icon4.svg' %}" alt="Interfaz simple">
+        <h3>Interfaz Simple e Intuitiva</h3>
+        <p>Diseñada para que cualquiera pueda usarla sin necesidad de capacitación.</p>
+      </div>
+
+      <div class="benefit-box">
+        <img src="{% static 'img/Icon5.svg' %}" alt="Importación CSV">
+        <h3>Importación Rápida desde CSV</h3>
+        <p>Migra todo tu inventario en minutos con nuestra herramienta de importación fácil.</p>
+      </div>
+
+      <div class="benefit-box">
+        <img src="{% static 'img/Icon6.svg' %}" alt="Soporte">
+        <h3>Soporte Dedicado</h3>
+        <p>Nuestro equipo está listo para ayudarte a resolver dudas y aprovechar la plataforma al máximo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container footer-content">
+        <!-- Bloque 1 -->
+        <div class="footer-box">
+          <h3>InventoryApp</h3>
+          <p>
+            Siempre estamos abiertos a discutir su proyecto y mejorar su presencia online.
+          </p>
+          <div class="footer-contact">
+            <div class="contact-box">
+              <strong>Envíeme un correo electrónico a</strong><br>
+              <span>sebastian98@gamail.com</span>
+            </div>
+            <div class="contact-box">
+              <strong>Llámanos</strong><br>
+              <span>3134568934</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloque 2 -->
+        <div class="footer-box">
+          <h3>¡Hablemos!</h3>
+          <p>
+            Siempre estamos abiertos a discutir su proyecto, mejorar su presencia en línea y ayudarlo con sus desafíos de diseño UX/UI.
+          </p>
+          <div class="socials">
+            <a href="#"><img src="{% static 'img/face.svg' %}" alt="Facebook"></a>
+            <a href="#"><img src="{% static 'img/twitter.svg' %}" alt="Twitter"></a>
+            <a href="#"><img src="{% static 'img/instagram.svg' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'img/in.svg' %}" alt="LinkedIn"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parte inferior -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>Copyright 2022,InventoryApp.com</p>
+        <nav class="footer-links">
+          <a href="#">Home</a>
+          <a href="#">About us</a>
+          <a href="#">Features</a>
+          <a href="#">Pricing</a>
+          <a href="#">FAQ</a>
+          <a href="#">Blog</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
