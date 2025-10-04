@@ -18,7 +18,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -27,8 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Tus apps
     'usuarios',
     'dashboard',
     'reportes',
@@ -51,7 +48,8 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r"C:\Users\Usuario\Downloads\Project\InventoryApp\banner\templates\banner"],
+        'DIRS': [r"C:\Users\Sebas\Desktop\Trabajos Uni\InventoryApp\core\dashboard\templates\dashboard",
+                 r"C:\Users\Sebas\Desktop\Trabajos Uni\InventoryApp\core\usuarios\template\usuarios"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
