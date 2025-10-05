@@ -48,7 +48,12 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r"C:\Users\Usuario\Downloads\Project\InventoryApp\banner\templates\banner"],
+        'DIRS': [r"C:\Users\Usuario\Downloads\Project\InventoryApp\banner\templates\banner",
+                 r"C:\Users\Usuario\Downloads\Project\InventoryApp\dashboard\templates\dashboard",
+                 r"C:\Users\Usuario\Downloads\Project\InventoryApp\usuarios\templates\usuarios",
+                 r"C:\Users\Usuario\Downloads\Project\InventoryApp\reportes\templates\reportes"],
+        
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

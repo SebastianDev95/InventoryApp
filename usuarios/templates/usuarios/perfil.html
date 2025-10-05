@@ -1,11 +1,84 @@
 {% extends 'home.html' %}
-
-
-{% block content %}
-
 {% load static %}
 
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+{% endblock %}
 
+{% block content %}
+<main class="main-content profile-page">
+  <h1 class="profile-title">Configuración de la Cuenta</h1>
 
+  <div class="profile-center">
+    <div class="profile-wrap">
+      <div class="profile-card">
+        <!-- Avatar -->
+        <div class="avatar-section">
+          <img src="{% static 'usuarios/img/avatar.png' %}" alt="Avatar" class="avatar">
+          <div class="avatar-actions">
+            <button class="btn-primary">Actualizar</button>
+            <button class="btn-danger">Eliminar</button>
+          </div>
+        </div>
 
+        <!-- Formulario -->
+        <form class="profile-form">
+          <div class="field-row">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" value="Morty Smith">
+          </div>
+
+          <div class="field-row">
+            <label for="mensaje">Mensaje de bienvenida</label>
+            <textarea id="mensaje" name="mensaje" rows="3">Bienvenido a mi perfil. Aquí puedes gestionar tu cuenta.</textarea>
+          </div>
+
+          <div class="two-col">
+            <div class="field-row">
+              <label for="idioma">Idioma</label>
+              <select id="idioma" name="idioma">
+                <option>Español</option>
+                <option>Inglés</option>
+              </select>
+            </div>
+
+            <div class="field-row">
+              <label for="hora">Formato de hora</label>
+              <select id="hora" name="hora">
+                <option>24h</option>
+                <option>12h (AM/PM)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="two-col">
+            <div class="field-row">
+              <label for="pais">País</label>
+              <select id="pais" name="pais">
+                <option>Colombia</option>
+                <option>México</option>
+                <option>España</option>
+              </select>
+            </div>
+
+            <div class="field-row">
+              <label for="zona">Zona horaria</label>
+              <select id="zona" name="zona">
+                <option>UTC -5 Bogotá</option>
+                <option>UTC -6 Ciudad de México</option>
+                <option>UTC +1 Madrid</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-buttons">
+            <button class="btn-primary">Guardar cambios</button>
+            <button class="btn-outline">Cancelar</button>
+            <button class="btn-danger delete-account">Eliminar cuenta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
 {% endblock %}

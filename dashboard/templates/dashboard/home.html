@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Gestion</title>
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    {% block extra_head %}{% endblock %}
 </head>
 <body>
     <aside class="sidebar">
@@ -19,6 +20,15 @@
         </div>
 
         <nav class="nav">
+            <!-- Perfil arriba de Dashboard -->
+            <a href="{% url 'perfil' %}" class="nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 20c0-4 8-4 8-4s8 0 8 4"></path>
+                </svg>
+                <span>Perfil</span>
+            </a>
+
             <a href="#" class="nav-item active">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="3" width="7" height="7"></rect>

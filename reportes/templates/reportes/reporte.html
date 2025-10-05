@@ -1,0 +1,221 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/reportes.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="main-content reportes-page">
+    <h1 class="page-title">Reportes de Inventario</h1>
+
+    <!-- ===== TARJETAS DE ESTADÍSTICAS ===== -->
+    <div class="stats-grid">
+        <div class="stat-card red">
+            <img src="{% static 'img/warning.svg' %}" alt="Productos críticos" class="stat-icon">
+            <div>
+                <p class="stat-label">Productos Críticos</p>
+                <p class="stat-value">5</p>
+            </div>
+        </div>
+
+        <div class="stat-card yellow">
+            <img src="{% static 'img/bajo.svg' %}" alt="Bajo stock" class="stat-icon">
+            <div>
+                <p class="stat-label">Bajo Stock</p>
+                <p class="stat-value">3</p>
+            </div>
+        </div>
+
+        <div class="stat-card green">
+            <img src="{% static 'img/dolar.svg' %}" alt="Valor en riesgo" class="stat-icon">
+            <div>
+                <p class="stat-label">Valor en Riesgo</p>
+                <p class="stat-value">$2,890</p>
+            </div>
+        </div>
+
+        <div class="stat-card blue">
+            <img src="{% static 'img/cuadro.svg' %}" alt="Categorías" class="stat-icon">
+            <div>
+                <p class="stat-label">Total de Categorías</p>
+                <p class="stat-value">6</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CONTENIDO PRINCIPAL ===== -->
+    <div class="reports-grid">
+        <!-- Reporte de Stock Bajo (IZQUIERDA) -->
+        <div class="report-card report-left">
+            <div class="card-header">
+                <img src="{% static 'img/warning.svg' %}" alt="Alerta" class="card-icon">
+                <h2>Reporte de Stock Bajo</h2>
+            </div>
+            <p class="subtitle">Productos que requieren reabastecimiento inmediato</p>
+
+            <!-- LISTA (reemplaza la tabla para estilado idéntico a tu screenshot) -->
+            <div class="stock-list">
+                <div class="stock-item">
+                    <div class="stock-info">
+                        <strong>Mouse</strong>
+                        <p class="muted">Accesorios</p>
+                    </div>
+                    <div class="stock-meta">
+                        <span class="qty">5 unidades</span>
+                        <span class="badge low">bajo stock</span>
+                    </div>
+                </div>
+
+                <div class="stock-item">
+                    <div class="stock-info">
+                        <strong>Monitor</strong>
+                        <p class="muted">Accesorios</p>
+                    </div>
+                    <div class="stock-meta">
+                        <span class="qty">8 unidades</span>
+                        <span class="badge low">bajo stock</span>
+                    </div>
+                </div>
+
+                <div class="stock-item">
+                    <div class="stock-info">
+                        <strong>Teclado M</strong>
+                        <p class="muted">Accesorios</p>
+                    </div>
+                    <div class="stock-meta">
+                        <span class="qty">0 unidades</span>
+                        <span class="badge out">agotado</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="impacto">
+                <h3>Impacto financiero</h3>
+                <p><strong>Productos en riesgo:</strong> 3 productos</p>
+                <p><strong>Valor total en riesgo:</strong> <span class="text-danger">$2.890</span></p>
+                <p><strong>Reorden sugerido:</strong> <span class="text-primary">$8.670</span></p>
+            </div>
+        </div>
+
+        <!-- Análisis por Categoría (DERECHA) -->
+        <div class="report-card report-right">
+            <div class="card-header">
+                <img src="{% static 'img/est.svg' %}" alt="Analisis" class="card-icon">
+                <h2>Análisis por Categoría</h2>
+            </div>
+            <p class="subtitle">Distribución de inventario por categorías</p>
+
+            <div class="category-list">
+                <div class="category-item">
+                    <div class="label">
+                        <span class="cat-name">Electrónicos</span>
+                        <span class="cat-count">15 Productos</span>
+                    </div>
+                    <div class="progress-bar"><div style="width:45%"></div></div>
+                    <div class="cat-meta">
+                        <span>Valor: $45.000</span>
+                        <span class="pct">45%</span>
+                    </div>
+                </div>
+
+                <div class="category-item">
+                    <div class="label">
+                        <span class="cat-name">Accesorios</span>
+                        <span class="cat-count">25 Productos</span>
+                    </div>
+                    <div class="progress-bar"><div style="width:25%"></div></div>
+                    <div class="cat-meta">
+                        <span>Valor: $8.500</span>
+                        <span class="pct">25%</span>
+                    </div>
+                </div>
+
+                <div class="category-item">
+                    <div class="label">
+                        <span class="cat-name">Oficina</span>
+                        <span class="cat-count">18 Productos</span>
+                    </div>
+                    <div class="progress-bar"><div style="width:18%"></div></div>
+                    <div class="cat-meta">
+                        <span>Valor: $12.000</span>
+                        <span class="pct">18%</span>
+                    </div>
+                </div>
+
+                <div class="category-item">
+                    <div class="label">
+                        <span class="cat-name">Mobiliario</span>
+                        <span class="cat-count">8 Productos</span>
+                    </div>
+                    <div class="progress-bar"><div style="width:8%"></div></div>
+                    <div class="cat-meta">
+                        <span>Valor: $15.000</span>
+                        <span class="pct">8%</span>
+                    </div>
+                </div>
+
+                <div class="category-item">
+                    <div class="label">
+                        <span class="cat-name">Software</span>
+                        <span class="cat-count">3 Productos</span>
+                    </div>
+                    <div class="progress-bar"><div style="width:3%"></div></div>
+                    <div class="cat-meta">
+                        <span>Valor: $2.500</span>
+                        <span class="pct">3%</span>
+                    </div>
+                </div>
+
+                <div class="category-item">
+                    <div class="label">
+                        <span class="cat-name">Consumible</span>
+                        <span class="cat-count">12 Productos</span>
+                    </div>
+                    <div class="progress-bar"><div style="width:12%"></div></div>
+                    <div class="cat-meta">
+                        <span>Valor: $1.800</span>
+                        <span class="pct">12%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== EXPORTACIONES ===== -->
+    <div class="export-section">
+        <div class="export-card">
+            <div class="card-header">
+                <img src="{% static 'img/verde.svg' %}" alt="Analisis" class="card-icon">
+                <h3>Exportar Inventario</h3>
+            </div>
+            <p>Genere reportes completos en Excel o PDF.</p>
+            <div class="btn-group">
+                 <button class="btn-excel">
+                    <img src="{% static 'img/descarga.svg' %}" alt="Excel" class="btn-icon">
+                    Excel
+                </button>
+                    <button class="btn-pdf">
+                        <img src="{% static 'img/descarga.svg' %}" alt="PDF" class="btn-icon">
+                        PDF
+                    </button>
+            </div>
+        </div>
+
+        <div class="export-card">
+                <h3>Inventario Completo</h3>
+            <p>Reporte detallado con todos los productos, categorías y valoraciones.</p>
+            <div class="btn-group">
+              <button class="btn-excel">
+                 <img src="{% static 'img/descarga.svg' %}" alt="Excel" class="btn-icon">
+                 Excel Completo
+              </button>
+              <button class="btn-pdf">
+                 <img src="{% static 'img/descarga.svg' %}" alt="PDF" class="btn-icon">
+                  PDF Completo
+              </button>
+           </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
