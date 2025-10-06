@@ -1,0 +1,57 @@
+{% extends 'home.html' %}
+{% load static %}
+    
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/editar.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="form-container">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2>EDITAR PRODUCTO</h2>
+                    <p>COMPLETE LA INFORMACION PARA AGREGAR UN PRODUCTO</p>
+                </div>
+
+                <form id="editProductForm" class="product-form">
+                    <div class="form-group">
+                        <label for="productName">Nombre del producto</label>
+                        <input type="text" id="productName" name="productName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Cantidad</label>
+                        <input type="number" id="quantity" name="quantity" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Categoría</label>
+                        <input type="text" id="category" name="category" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Precio</label>
+                        <input type="number" id="price" name="price" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="stock">Stock</label>
+                        <input type="number" id="stock" name="stock" required>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">EDITAR PRODUCTO</button>
+                        <button type="button" class="btn-cancel" onclick="window.location.href='dashboard.html'">CANCELAR</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="edit-product.js"></script>
+</body>
+</html>
+{% endblock %}
