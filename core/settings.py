@@ -51,10 +51,7 @@ TEMPLATES = [
         'DIRS': [r"C:\Users\Usuario\Downloads\Project\InventoryApp\banner\templates\banner",
                  r"C:\Users\Usuario\Downloads\Project\InventoryApp\dashboard\templates\dashboard",
                  r"C:\Users\Usuario\Downloads\Project\InventoryApp\usuarios\templates\usuarios",
-                 r"C:\Users\Usuario\Downloads\Project\InventoryApp\reportes\templates\reportes",
-                 r"C:\Users\Sebas\Desktop\Trabajos Uni\InventoryApp\core\dashboard\templates\dashboard",
-                 r"C:\Users\Sebas\Desktop\Trabajos Uni\InventoryApp\core\reportes\templates\reportes",
-                 r"C:\Users\Sebas\Desktop\Trabajos Uni\InventoryApp\core\usuarios\templates\usuarios"],
+                 r"C:\Users\Usuario\Downloads\Project\InventoryApp\reportes\templates\reportes"],
         
 
         'APP_DIRS': True,
