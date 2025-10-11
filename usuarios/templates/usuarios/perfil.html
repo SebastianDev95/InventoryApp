@@ -22,15 +22,17 @@
         </div>
 
         <!-- Formulario -->
-        <form class="profile-form">
+        <form class="profile-form" method="POST">
+          {% csrf_token %}
+          
           <div class="field-row">
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" value="Morty Smith">
+            <input type="text" id="nombre" name="nombre" value="{{ nombre }}">
           </div>
 
           <div class="field-row">
             <label for="mensaje">Mensaje de bienvenida</label>
-            <textarea id="mensaje" name="mensaje" rows="3">Bienvenido a mi perfil. Aquí puedes gestionar tu cuenta.</textarea>
+            <textarea id="mensaje" name="mensaje" rows="3">{{ mensaje }}</textarea>
           </div>
 
           <div class="two-col">
@@ -72,9 +74,9 @@
           </div>
 
           <div class="form-buttons">
-            <button class="btn-primary">Guardar cambios</button>
-            <button class="btn-outline">Cancelar</button>
-            <button class="btn-danger delete-account">Eliminar cuenta</button>
+            <button type="submit" class="btn-primary">Guardar cambios</button>
+            <button type="button" class="btn-outline">Cancelar</button>
+            <button type="button" class="btn-danger delete-account">Eliminar cuenta</button>
           </div>
         </form>
       </div>
