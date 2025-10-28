@@ -54,7 +54,6 @@
             </div>
             <p class="subtitle">Productos que requieren reabastecimiento inmediato</p>
 
-            <!-- LISTA (reemplaza la tabla para estilado idéntico a tu screenshot) -->
             <div class="stock-list">
                 <div class="stock-item">
                     <div class="stock-info">
@@ -191,30 +190,31 @@
             </div>
             <p>Genere reportes completos en Excel o PDF.</p>
             <div class="btn-group">
-                 <button class="btn-excel">
+                <a href="{% url 'exportar_excel' %}" class="btn-excel">
                     <img src="{% static 'img/descarga.svg' %}" alt="Excel" class="btn-icon">
                     Excel
-                </button>
-                    <button class="btn-pdf">
-                        <img src="{% static 'img/descarga.svg' %}" alt="PDF" class="btn-icon">
-                        PDF
-                    </button>
+                </a>
+                <a href="{% url 'exportar_pdf' %}" class="btn-pdf">
+                    <img src="{% static 'img/descarga.svg' %}" alt="PDF" class="btn-icon">
+                    PDF
+                </a>
             </div>
         </div>
 
         <div class="export-card">
-                <h3>Inventario Completo</h3>
+            <h3>Inventario Completo</h3>
             <p>Reporte detallado con todos los productos, categorías y valoraciones.</p>
             <div class="btn-group">
-              <button class="btn-excel">
-                 <img src="{% static 'img/descarga.svg' %}" alt="Excel" class="btn-icon">
-                 Excel Completo
-              </button>
-              <button class="btn-pdf">
-                 <img src="{% static 'img/descarga.svg' %}" alt="PDF" class="btn-icon">
-                  PDF Completo
-              </button>
-           </div>
+                <a href="{% url 'exportar_excel_completo' %}" class="btn-excel">
+                   <img src="{% static 'img/descarga.svg' %}" alt="Excel" class="btn-icon">
+                   Excel Completo
+                </a>
+                <a href="{% url 'exportar_pdf_completo' %}" class="btn-pdf">
+                   <img src="{% static 'img/descarga.svg' %}" alt="PDF" class="btn-icon">
+                   PDF Completo
+                </a>
+
+            </div>
         </div>
     </div>
 </main>

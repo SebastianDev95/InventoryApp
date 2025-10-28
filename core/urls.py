@@ -6,5 +6,5 @@ urlpatterns = [
     path("", include("banner.urls")),
     path("",include("dashboard.urls")),
     path("",include("reportes.urls")),
-    path("",include("usuarios.urls")),
+    path("",include("usuarios.urls"))
 ]
