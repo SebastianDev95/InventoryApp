@@ -1,8 +1,10 @@
 from django.urls import path
+from . import views
 from banner.views import *
 
 urlpatterns = [
-    path("", index, name="index"),
-    path("register", register, name="register"),
-    path("login", login, name="login")
+    path('register/', views.register_view, name='register'),
+    path('login/', views.login_view, name='login'),
+    path("",index,name="index")
+
 ]

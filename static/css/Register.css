@@ -1,3 +1,5 @@
+/* --- En tu archivo css/Register.css --- */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +14,7 @@ body {
     flex-direction: column;
     position: relative;
     overflow-x: hidden;
+    color: #f5f5f5; /* Pone el texto base en color claro */
 }
 
 body::before {
@@ -26,29 +29,55 @@ body::before {
     z-index: 0;
 }
 
+/* --- En tu archivo css/Register.css --- */
+
 .header {
-    padding: 2rem 3rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between; /* Mantiene la separación máxima */
+    flex-direction: row-reverse;  /* <-- ¡AÑADE ESTA LÍNEA! */
+    align-items: center;
+    padding: 1rem 2rem;
     position: relative;
     z-index: 10;
 }
 
-.sign-in-btn {
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: rgba(255, 255, 255, 0.7);
-    padding: 0.75rem 2rem;
-    font-size: 0.875rem;
-    font-weight: 600;
+.header-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* Hereda el color del body (blanco) */
+    font-size: 1.5rem; /* Tamaño del texto del logo */
+    font-weight: bold;
     letter-spacing: 1px;
-    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.header-logo:hover {
+    opacity: 0.8;
+}
+
+.header-logo svg {
+    width: 32px; /* Tamaño del icono del logo */
+    height: 32px;
+    fill: currentColor; /* El color de relleno será el del texto */
+    margin-right: 8px; /* Espacio entre el icono y el texto */
+}
+
+/* Estilo para el botón "REGISTER" / "SIGN IN" */
+.sign-in-btn {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
 .sign-in-btn:hover {
-    border-color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.9);
     color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .main-content {
@@ -68,6 +97,7 @@ body::before {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 560px;
+    color: #1a1a1a;
 }
 
 .title {
@@ -96,6 +126,7 @@ body::before {
     letter-spacing: 0.5px;
     color: #333;
     transition: border-color 0.3s ease;
+    border-radius: 4px;
 }
 
 .form-group input::placeholder {
@@ -163,6 +194,7 @@ body::before {
     cursor: pointer;
     margin-top: 1rem;
     transition: background 0.3s ease;
+    border-radius: 4px;
 }
 
 .submit-btn:hover {
@@ -209,6 +241,33 @@ body::before {
     position: relative;
     z-index: 10;
 }
+
+/* Estilos para los mensajes de error/éxito */
+.messages {
+    margin-bottom: 1.5rem;
+}
+.alert {
+    padding: 1rem;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 500;
+}
+.alert-error {
+    background-color: #e74c3c;
+}
+.alert-success {
+    background-color: #2ecc71;
+}
+.alert-warning {
+    background-color: #f39c12;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    padding-top: 4px;
+}
+
 
 @media (max-width: 768px) {
     .register-card {
