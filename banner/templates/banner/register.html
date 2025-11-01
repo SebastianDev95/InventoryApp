@@ -6,27 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Gestion</title>
     <link rel="stylesheet" href="{% static 'css/Register.css' %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
-<body> <header class="header">
+<body>
+    <header class="header">
         <a href="{% url 'login' %}" class="sign-in-btn">SIGN IN</a>
     </header>
 
-    <main class="main-content"> <div class="register-card">
+    <main class="main-content">
+        <div class="register-card">
             <h1 class="title">Registro</h1>
-            
-            {% if messages %}
-                <div class="messages">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
             
             <form class="register-form" method="POST" action="{% url 'register' %}">
                 {% csrf_token %}
                 
+                {% if form.non_field_errors %}
+                    <div class="form-group">
+                        <span class="error" style="color: red; text-align: center; display: block;">{{ form.non_field_errors.0 }}</span>
+                    </div>
+                {% endif %}
+
                 <div class="form-group">
                     {{ form.first_name }}
                     {% if form.first_name.errors %}
@@ -63,15 +63,15 @@
                 
                 <div class="checkbox-group">
                     {{ form.terms }}
-                    <label for="id_terms">I agree to the Terms of Service and Privacy Policy.</label> {% if form.terms.errors %}
+                    <label for="id_terms">I agree to the Terms of Service and Privacy Policy.</label>
+                    {% if form.terms.errors %}
                         <span class="error">{{ form.terms.errors.0 }}</span>
                     {% endif %}
                 </div>
                 
                 <button type="submit" class="submit-btn">CREATE AN ACCOUNT</button>
             </form>
-            
-            <div class="social-login">
+              <div class="social-login">
                 <button class="social-btn google" aria-label="Sign in with Google">
                     <svg width="24" height="24" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -94,6 +94,8 @@
                 </button>
             </div>
             
+         
+            
             <p class="login-link">¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión aquí</a></p>
         </div>
     </main>
@@ -102,8 +104,16 @@
         <p>© 2021 - 2025 All Rights Reserved. Opay</p>
     </footer>
 
+    {% if messages %}
+    <div id="django-messages" style="display: none;">
+        {% for message in messages %}
+            <span data-tag="{{ message.tags }}" data-message="{{ message|escapejs }}"></span>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     <script>
-        // Toggle password visibility
+        // Tu script existente para ver/ocultar contraseña
         document.querySelectorAll('.toggle-password').forEach(button => {
             button.addEventListener('click', function() {
                 const passwordGroup = this.closest('.password-group');
@@ -113,6 +123,31 @@
                     passwordInput.setAttribute('type', type);
                 }
             });
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const messagesContainer = document.getElementById('django-messages');
+            if (messagesContainer) {
+                const messageSpans = messagesContainer.querySelectorAll('span');
+                messageSpans.forEach(function(span) {
+                    const tag = span.dataset.tag;
+                    const message = span.dataset.message;
+                    
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        icon: tag, // 'success', 'error', 'info', etc.
+                        title: message
+                    });
+                });
+            }
         });
     </script>
 </body>

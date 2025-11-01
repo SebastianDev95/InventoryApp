@@ -401,6 +401,49 @@ input[type="checkbox"] {
     }
 }
 
+/* Styles for status badges in home.html */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.badge.active {
+    background-color: #e0ffe0; /* Fondo verde claro */
+    color: #28a745; /* Texto verde oscuro */
+}
+
+.badge.low-stock {
+    background-color: #fffacd; /* Fondo amarillo claro */
+    color: #ffc107; /* Texto amarillo oscuro */
+}
+
+.badge.out-of-stock {
+    background-color: #ffe0e0; /* Fondo rojo claro */
+    color: #dc3545; /* Texto rojo oscuro */
+}
+
+/* Estilos para los íconos de acción en la tabla */
+.edit-icon, .delete-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 5px; /* Espacio entre los iconos */
+    color: #6c757d; /* Color gris para los iconos */
+    transition: color 0.2s ease;
+}
+
+.edit-icon:hover {
+    color: #007bff; /* Azul al pasar el ratón */
+}
+
+.delete-icon:hover {
+    color: #dc3545; /* Rojo al pasar el ratón */
+}
 
 
 

@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Gestion</title>
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
     {% block extra_head %}{% endblock %}
 </head>
 <body>
@@ -20,8 +23,7 @@
         </div>
 
         <nav class="nav">
-            <!-- Perfil arriba de Dashboard -->
-            <a href="{% url 'perfil' %}" class="nav-item">
+            <a href="#" class="nav-item">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="8" r="4"></circle>
                     <path d="M4 20c0-4 8-4 8-4s8 0 8 4"></path>
@@ -29,7 +31,7 @@
                 <span>Perfil</span>
             </a>
 
-            <a href="#" class="nav-item active">
+            <a href="{% url 'dashboard' %}" class="nav-item active"> 
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="3" width="7" height="7"></rect>
                     <rect x="14" y="3" width="7" height="7"></rect>
@@ -70,23 +72,21 @@
                     <span class="slider"></span>
                 </label>
             </div>
-            <header class="header">
-        <a href="{% url 'logout' %}" class="logout-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                <polyline points="16 17 21 12 16 7"></polyline>
-                <line x1="21" y1="12" x2="9" y2="12"></line>
-            </svg>
-            <span>Salir</span>
-        </a>
-    </header>
             
-            
+            <a href="{% url 'logout' %}" class="logout-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span>Salir</span>
+            </a>
         </div>
     </aside>
-    {% block content %}
 
+    {% block content %}
     <main class="main-content">
+        
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-icon purple">
@@ -96,7 +96,7 @@
                 </div>
                 <div class="stat-info">
                     <p class="stat-label">Total de Productos</p>
-                    <p class="stat-value">5</p>
+                    <p class="stat-value">{{ total_productos }}</p>
                 </div>
             </div>
 
@@ -108,7 +108,7 @@
                 </div>
                 <div class="stat-info">
                     <p class="stat-label">Stock Bajo/Agotado</p>
-                    <p class="stat-value">3</p>
+                    <p class="stat-value">{{ stock_bajo }}</p>
                 </div>
             </div>
 
@@ -121,7 +121,7 @@
                 </div>
                 <div class="stat-info">
                     <p class="stat-label">Valor total</p>
-                    <p class="stat-value">3</p>
+                    <p class="stat-value">${{ valor_total|floatformat:2 }}</p>
                 </div>
             </div>
 
@@ -134,7 +134,7 @@
                 </div>
                 <div class="stat-info">
                     <p class="stat-label">Productos Activos</p>
-                    <p class="stat-value">3</p>
+                    <p class="stat-value">{{ productos_activos }}</p>
                 </div>
             </div>
         </div>
@@ -156,27 +156,27 @@
                     <p class="section-subtitle">ID Producto, Nombre, Stock, Categoría, Estado - con opciones de gestión</p>
                 </div>
                 <div class="section-actions">
-                    <button class="action-btn delete">
+                    <button class="action-btn delete" id="deleteSelectedBtn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="3 6 5 6 21 6"></polyline>
                             <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
                         </svg>
                         Eliminar
                     </button>
-                    <button class="action-btn edit">
+                    <button class="action-btn edit" id="editSelectedBtn">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                             <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
                         </svg>
                         Editar
                     </button>
-                    <button class="action-btn add">
+                    <a href="{% url 'nuevo_producto' %}" class="action-btn add">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19"></line>
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                         Añadir Producto
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -191,70 +191,182 @@
                             <th>Stock ↓</th>
                             <th>Precio ↓</th>
                             <th>Estado ↓</th>
-                            <th></th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for producto in productos %}
                         <tr>
-                            <td><input type="checkbox" checked></td>
-                            <td>1</td>
-                            <td>Laptop Dell XPS 13</td>
-                            <td>Electrónicos</td>
-                            <td>15</td>
-                            <td>$1200</td>
-                            <td><span class="badge active">● Activos</span></td>
-                            <td><button class="edit-icon">✎</button></td>
+                            <td><input type="checkbox" class="product-checkbox" name="selected_products" value="{{ producto.pk }}"></td>
+                            <td>{{ producto.pk }}</td>
+                            <td>{{ producto.name }}</td>
+                            <td>{{ producto.category }}</td>
+                            <td>{{ producto.stock }}</td>
+                            <td>${{ producto.price }}</td>
+                            <td>
+                                {% if producto.status == 'active' %}
+                                    <span class="badge active">● Activo</span>
+                                {% elif producto.status == 'low_stock' %}
+                                    <span class="badge low-stock">● Bajo Stock</span>
+                                {% elif producto.status == 'out_of_stock' %}
+                                    <span class="badge out-of-stock">● Agotado</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'editar_producto' pk=producto.pk %}" class="edit-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                    </svg>
+                                </a>
+                                <form action="{% url 'eliminar_producto' pk=producto.pk %}" method="post" style="display:inline;" class="delete-form">
+                                    {% csrf_token %}
+                                    <button type="submit" class="delete-icon" onclick="return confirm('¿Estás seguro de que quieres eliminar {{ producto.name }}?');">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="3 6 5 6 21 6"></polyline>
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
-                        <tr>
-                            <td><input type="checkbox" checked></td>
-                            <td>2</td>
-                            <td>Mouse Logitech MX</td>
-                            <td>Accesorios</td>
-                            <td>5</td>
-                            <td>$80</td>
-                            <td><span class="badge low-stock">● Bajo Stock</span></td>
-                            <td><button class="edit-icon">✎</button></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" checked></td>
-                            <td>3</td>
-                            <td>Teclado Mecánico</td>
-                            <td>Accesorios</td>
-                            <td>0</td>
-                            <td>$150</td>
-                            <td><span class="badge out-of-stock">● Agotado</span></td>
-                            <td><button class="edit-icon">✎</button></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" checked></td>
-                            <td>4</td>
-                            <td>Monitor 24</td>
-                            <td>Electrónicos</td>
-                            <td>8</td>
-                            <td>$300</td>
-                            <td><span class="badge low-stock">● Bajo Stock</span></td>
-                            <td><button class="edit-icon">✎</button></td>
-                        </tr>
-                        <tr>
-                            <td><input type="checkbox" checked></td>
-                            <td>5</td>
-                            <td>Impresora HP LaserJet</td>
-                            <td>Oficina</td>
-                            <td>25</td>
-                            <td>$250</td>
-                            <td><span class="badge active">● Activo</span></td>
-                            <td><button class="edit-icon">✎</button></td>
-                        </tr>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
     </main>
+    {% endblock %}
 
-    <script src="dashboard.js"></script>
+    {% if messages %}
+    <div id="django-messages" style="display: none;">
+        {% for message in messages %}
+            <span data-tag="{{ message.tags }}" data-message="{{ message|escapejs }}"></span>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+    <script src="{% static 'js/dashboard.js' %}"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        // --- INICIO: LÓGICA DE SWEETALERT (AHORA JS PURO) ---
+        const messagesContainer = document.getElementById('django-messages');
+        if (messagesContainer) {
+            const messageSpans = messagesContainer.querySelectorAll('span');
+            
+            messageSpans.forEach(function(span) {
+                const tag = span.dataset.tag;
+                const message = span.dataset.message;
+                
+                // Dispara la alerta interactiva
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    icon: tag,       // 'success', 'error', 'info', etc.
+                    title: message
+                });
+            });
+        }
+        // --- FIN: LÓGICA DE SWEETALERT ---
+
+
+        // --- INICIO: LÓGICA DE BOTONES DEL DASHBOARD ---
+
+        // Lógica para botones de cancelar (de nuevo.html y editar.html)
+        const cancelButtons = document.querySelectorAll(".btn-cancel");
+        cancelButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                const targetUrl = this.dataset.url;
+                if (targetUrl) {
+                    window.location.href = targetUrl;
+                }
+            });
+        });
+
+        // Lógica para seleccionar/deseleccionar todos los checkboxes
+        const selectAllCheckbox = document.getElementById('selectAll');
+        const productCheckboxes = document.querySelectorAll('.product-checkbox');
+
+        if (selectAllCheckbox) {
+            selectAllCheckbox.addEventListener('change', function() {
+                productCheckboxes.forEach(checkbox => {
+                    checkbox.checked = selectAllCheckbox.checked;
+                });
+            });
+        }
+
+        // Lógica para el botón GLOBAL "Eliminar"
+        const deleteSelectedBtn = document.getElementById('deleteSelectedBtn');
+        if (deleteSelectedBtn) {
+            deleteSelectedBtn.addEventListener('click', function() {
+                const selectedProductIds = [];
+                productCheckboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        selectedProductIds.push(checkbox.value);
+                    }
+                });
+
+                if (selectedProductIds.length > 0) {
+                    if (confirm(`¿Estás seguro de que quieres eliminar ${selectedProductIds.length} producto(s) seleccionado(s)?`)) {
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = "{% url 'eliminar_productos_seleccionados' %}"; // Sin namespace
+                        form.style.display = 'none';
+
+                        const csrfInput = document.createElement('input');
+                        csrfInput.type = 'hidden';
+                        csrfInput.name = 'csrfmiddlewaretoken';
+                        csrfInput.value = '{{ csrf_token }}';
+                        form.appendChild(csrfInput);
+
+                        selectedProductIds.forEach(id => {
+                            const input = document.createElement('input');
+                            input.type = 'hidden';
+                            input.name = 'selected_products';
+                            input.value = id;
+                            form.appendChild(input);
+                        });
+
+                        document.body.appendChild(form);
+                        form.submit();
+                    }
+                } else {
+                    alert('Por favor selecciona al menos un producto para eliminar.');
+                }
+            });
+        }
+
+        // Lógica para el botón GLOBAL "Editar"
+        const editSelectedBtn = document.getElementById('editSelectedBtn');
+        if (editSelectedBtn) {
+            editSelectedBtn.addEventListener('click', function() {
+                const selectedProductIds = [];
+                productCheckboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        selectedProductIds.push(checkbox.value);
+                    }
+                });
+
+                if (selectedProductIds.length === 1) {
+                    // Reemplaza '0' con el pk seleccionado
+                    window.location.href = `{% url 'editar_producto' pk=0 %}`.replace('0', selectedProductIds[0]);
+                } else if (selectedProductIds.length > 1) {
+                    alert('Edición masiva no implementada. Por favor selecciona solo un producto.');
+                } else {
+                    alert('Por favor selecciona un producto para editar.');
+                }
+            });
+        }
+        // --- FIN: LÓGICA DE BOTONES DEL DASHBOARD ---
+    });
+    </script>
 </body>
 </html>
-{% endblock %}
-
-

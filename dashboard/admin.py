@@ -8,3 +8,11 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ['name', 'category']
     list_editable = ['status']
     ordering = ['-created_at']
+
+
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('dashboard.urls')), # O 'dashboard/'
+]
