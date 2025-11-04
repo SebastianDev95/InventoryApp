@@ -1,336 +1,338 @@
+/* === PÁGINA DE REPORTES === */
 .reportes-page {
-    background: #f3f5f9;
-    padding: 2rem;
+  background: #f3f5f9;
+  padding: 2rem;
+  font-family: "Inter", sans-serif;
 }
 
-/* Título */
+/* === TÍTULO === */
 .page-title {
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: #1e293b;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
 }
 
-/* Tarjetas de estadísticas */
+/* === TARJETAS DE ESTADÍSTICAS === */
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .stat-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: #fff;
-    padding: 1rem 1.25rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* nuevo: imagen para los iconos de las tarjetas */
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
 .stat-icon {
-    width: 44px;
-    height: 44px;
-    object-fit: cover;
-    border-radius: 8px;
-    flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
-.stat-card.red .stat-icon { background: rgba(220,38,38,0.06); }
-.stat-card.yellow .stat-icon { background: rgba(245,158,11,0.06); }
-.stat-card.green .stat-icon { background: rgba(16,185,129,0.06); }
-.stat-card.blue .stat-icon { background: rgba(59,130,246,0.06); }
+/* Colores de las tarjetas */
+.stat-card.red .stat-icon { background: rgba(220, 38, 38, 0.06); }
+.stat-card.yellow .stat-icon { background: rgba(245, 158, 11, 0.06); }
+.stat-card.green .stat-icon { background: rgba(16, 185, 129, 0.06); }
+.stat-card.blue .stat-icon { background: rgba(59, 130, 246, 0.06); }
 
 .stat-label {
-    color: #6b7280;
-    font-size: 0.9rem;
+  color: #6b7280;
+  font-size: 0.9rem;
 }
 
 .stat-value {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #111827;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111827;
 }
 
-/* Grillas principales */
+/* === GRILLAS PRINCIPALES === */
 .reports-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
+/* === TARJETAS DE REPORTE === */
 .report-card {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 6px 18px rgba(16,24,40,0.06);
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-/* Card header con img */
 .card-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .card-icon {
-    width: 34px;
-    height: 34px;
-    object-fit: contain;
-    flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .report-card h2 {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
 }
 
 .subtitle {
-    color: #6b7280;
-    font-size: 0.9rem;
-    margin-bottom: 8px;
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
 }
 
-/* === STOCK LIST (IZQUIERDA) === */
+/* === LISTA DE STOCK === */
 .stock-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-/* cada fila */
 .stock-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #fbfbfc;
-    border-radius: 10px;
-    padding: 14px 18px;
-    border: 1px solid rgba(15,23,42,0.03);
-    box-shadow: 0 1px 0 rgba(15,23,42,0.02) inset;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fbfbfc;
+  border-radius: 10px;
+  padding: 14px 18px;
+  border: 1px solid rgba(15, 23, 42, 0.03);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02) inset;
+  transition: background 0.2s ease;
+}
+
+.stock-item:hover {
+  background: #f9fafb;
 }
 
 .stock-info strong {
-    display: block;
-    font-size: 15px;
-    color: #0f172a;
-    margin-bottom: 4px;
+  display: block;
+  font-size: 15px;
+  color: #0f172a;
+  margin-bottom: 4px;
 }
 
 .stock-info .muted {
-    margin: 0;
-    font-size: 13px;
-    color: #6b7280;
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
 }
 
-/* meta (cantidad y badge) */
 .stock-meta {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+  text-align: right;
 }
 
 .qty {
-    font-weight: 600;
-    color: #0f172a;
+  font-weight: 600;
+  color: #0f172a;
 }
 
-/* Badges */
+/* === BADGES === */
 .badge {
-    font-size: 12px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    text-transform: lowercase;
-    font-weight: 600;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  text-transform: lowercase;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .badge.low {
-    background: #fff7e6;
-    color: #b45309;
+  background: #fff7e6;
+  color: #b45309;
 }
 
 .badge.out {
-    background: #fee2e2;
-    color: #991b1b;
+  background: #fee2e2;
+  color: #991b1b;
 }
 
-/* Impacto financiero (usa clase .impacto que ya tenías) */
+/* === IMPACTO FINANCIERO === */
 .impacto {
-    margin-top: 8px;
-    padding-top: 6px;
-    border-top: 1px solid #f1f5f9;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid #f1f5f9;
 }
 
 .impacto h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #0f172a;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #0f172a;
 }
 
 .impacto p {
-    font-size: 14px;
-    margin: 6px 0;
-    color: #111827;
+  font-size: 14px;
+  margin: 6px 0;
+  color: #111827;
 }
 
 .text-danger {
-    color: #dc2626;
-    font-weight: 700;
+  color: #dc2626;
+  font-weight: 700;
 }
 
 .text-primary {
-    color: #2563eb;
-    font-weight: 700;
+  color: #2563eb;
+  font-weight: 700;
 }
 
-/* === CATEGORÍAS (DERECHA) === */
+/* === ANÁLISIS POR CATEGORÍA === */
 .category-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 .category-item {
-    padding: 10px 0;
-    border-bottom: 1px solid #f1f5f9;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .category-item .label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    color: #0f172a;
-    margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 8px;
 }
 
 .progress-bar {
-    background: #eef6ff;
-    border-radius: 12px;
-    height: 10px;
-    margin-bottom: 8px;
-    overflow: hidden;
+  background: #eef6ff;
+  border-radius: 12px;
+  height: 10px;
+  margin-bottom: 8px;
+  overflow: hidden;
 }
 
 .progress-bar div {
-    height: 100%;
-    background: linear-gradient(90deg,#1e90ff,#3b82f6);
-    border-radius: 12px;
+  height: 100%;
+  background: linear-gradient(90deg, #1e90ff, #3b82f6);
+  border-radius: 12px;
+  transition: width 0.6s ease;
 }
 
-/* meta fila: valor y porcentaje */
 .cat-meta {
-    display:flex;
-    justify-content: space-between;
-    color: #6b7280;
-    font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  color: #6b7280;
+  font-size: 13px;
 }
 
-/* Exportación */
+/* === SECCIÓN DE EXPORTACIÓN === */
 .export-section {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
 }
 
 .export-card {
-    flex: 1;
-    min-width: 300px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(16,24,40,0.04);
-    padding: 1rem;
+  flex: 1;
+  min-width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.04);
+  padding: 1rem 1.25rem;
+  transition: transform 0.2s ease;
+}
+
+.export-card:hover {
+  transform: translateY(-4px);
 }
 
 .btn-group {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 0.75rem;
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
 }
 
-.btn-excel, .btn-pdf {
-    border: none;
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    cursor: pointer;
-    color: white;
+.btn-excel,
+.btn-pdf {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.25s ease, transform 0.2s ease;
 }
 
-.btn-excel { background:#10b981; }
-.btn-pdf { background:#ef4444; }
-.btn-pdf.full { background:#dc2626; }
+.btn-excel { background: #10b981; }
+.btn-pdf { background: #ef4444; }
 
-/* Ajuste de alineación de los botones con íconos */
-.btn-excel, .btn-pdf {
-    display: flex;
-    align-items: center;   
-    justify-content: center; 
-    gap: 8px;              
-}
+.btn-excel:hover { background: #059669; transform: translateY(-2px); }
+.btn-pdf:hover { background: #dc2626; transform: translateY(-2px); }
 
-/* Tamaño y alineación del ícono */
 .btn-icon {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-    display: inline-block;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: inline-block;
 }
 
-
-/* Responsive */
+/* === RESPONSIVE === */
 @media (max-width: 1024px) {
-    .reports-grid {
-        grid-template-columns: 1fr;
-    }
+  .reports-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 
+  .page-title {
+    font-size: 1.5rem;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-.stat-icon,
-.btn-icon {
-  background: none !important;
-  box-shadow: none !important;
-  filter: none !important;
+  .btn-group {
+    flex-direction: column;
+  }
 }
 
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  .reportes-page {
+    padding: 1rem;
+  }
+}

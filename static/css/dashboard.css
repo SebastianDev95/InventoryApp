@@ -11,6 +11,7 @@ body {
     background: #f5f7fa;
 }
 
+/* === SIDEBAR === */
 .sidebar {
     width: 260px;
     background: linear-gradient(180deg, #3d4465 0%, #2d3350 100%);
@@ -143,6 +144,7 @@ input:checked + .slider:before {
     background: rgba(255, 255, 255, 0.15);
 }
 
+/* === MAIN CONTENT === */
 .main-content {
     flex: 1;
     padding: 2rem;
@@ -190,11 +192,6 @@ input:checked + .slider:before {
     color: #10b981;
 }
 
-.stat-icon.green-check {
-    background: #e5f9f0;
-    color: #10b981;
-}
-
 .stat-info {
     flex: 1;
 }
@@ -211,6 +208,7 @@ input:checked + .slider:before {
     color: #1f2937;
 }
 
+/* === SEARCH BAR === */
 .search-bar {
     position: relative;
     max-width: 400px;
@@ -243,6 +241,7 @@ input:checked + .slider:before {
     cursor: pointer;
 }
 
+/* === PRODUCTS SECTION === */
 .products-section {
     background: white;
     border-radius: 12px;
@@ -336,44 +335,51 @@ input:checked + .slider:before {
     background: #f9fafb;
 }
 
+/* === BADGES === */
 .badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.375rem;
-    padding: 0.375rem 0.75rem;
+    padding: 4px 8px;
     border-radius: 12px;
-    font-size: 0.8125rem;
-    font-weight: 500;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1;
 }
 
 .badge.active {
-    background: #d1fae5;
-    color: #065f46;
+    background-color: #e0ffe0; /* verde claro */
+    color: #28a745; /* verde oscuro */
 }
 
 .badge.low-stock {
-    background: #fef3c7;
-    color: #92400e;
+    background-color: #fffacd; /* amarillo claro */
+    color: #ffc107; /* amarillo oscuro */
 }
 
 .badge.out-of-stock {
-    background: #fee2e2;
-    color: #991b1b;
+    background-color: #ffe0e0; /* rojo claro */
+    color: #dc3545; /* rojo oscuro */
 }
 
-.edit-icon {
+/* === ICONS === */
+.edit-icon, .delete-icon {
     background: none;
     border: none;
-    font-size: 1.125rem;
-    color: #6b7280;
     cursor: pointer;
-    padding: 0.25rem;
+    padding: 0 5px;
+    color: #6c757d;
+    transition: color 0.2s ease;
 }
 
 .edit-icon:hover {
-    color: #374151;
+    color: #007bff;
 }
 
+.delete-icon:hover {
+    color: #dc3545;
+}
+
+/* === CHECKBOXES === */
 input[type="checkbox"] {
     width: 16px;
     height: 16px;
@@ -381,6 +387,7 @@ input[type="checkbox"] {
     accent-color: #4A9EFF;
 }
 
+/* === MEDIA QUERIES === */
 @media (max-width: 1024px) {
     .sidebar {
         width: 220px;
@@ -391,149 +398,12 @@ input[type="checkbox"] {
     body {
         flex-direction: column;
     }
-    
+
     .sidebar {
         width: 100%;
     }
-    
+
     .stats-grid {
         grid-template-columns: 1fr;
     }
 }
-
-/* Styles for status badges in home.html */
-.badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.8em;
-    font-weight: 600;
-    line-height: 1;
-}
-
-.badge.active {
-    background-color: #e0ffe0; /* Fondo verde claro */
-    color: #28a745; /* Texto verde oscuro */
-}
-
-.badge.low-stock {
-    background-color: #fffacd; /* Fondo amarillo claro */
-    color: #ffc107; /* Texto amarillo oscuro */
-}
-
-.badge.out-of-stock {
-    background-color: #ffe0e0; /* Fondo rojo claro */
-    color: #dc3545; /* Texto rojo oscuro */
-}
-
-/* Estilos para los íconos de acción en la tabla */
-.edit-icon, .delete-icon {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0 5px; /* Espacio entre los iconos */
-    color: #6c757d; /* Color gris para los iconos */
-    transition: color 0.2s ease;
-}
-
-.edit-icon:hover {
-    color: #007bff; /* Azul al pasar el ratón */
-}
-
-.delete-icon:hover {
-    color: #dc3545; /* Rojo al pasar el ratón */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
