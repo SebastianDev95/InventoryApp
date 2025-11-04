@@ -4,20 +4,20 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 import datetime
 
-# --- Importaciones de Excel ---
+
 import openpyxl
 from openpyxl.styles import Font, Alignment, Border, Side, PatternFill
 from openpyxl.chart import BarChart, Reference
 from openpyxl.chart.label import DataLabelList
 
-# --- Importaciones de PDF ---
+
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer, PageBreak
 from reportlab.lib.pagesizes import letter, landscape
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 
-# --- Importar modelo ---
+
 from dashboard.models import Product
 
 
