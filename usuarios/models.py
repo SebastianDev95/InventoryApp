@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+# Create your models here.
 def avatar_upload_path(instance, filename):
     return f"avatars/user_{instance.user.id}/{filename}"
 
@@ -37,3 +38,4 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     if hasattr(instance, 'profile'):
         instance.profile.save()
+
