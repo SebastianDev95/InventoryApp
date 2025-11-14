@@ -7,7 +7,7 @@
 
 {% block content %}
 <main class="main-content profile-page">
-  <h1 class="profile-title">{{ text.title }}</h1>
+  <h1 class="profile-title">Perfil</h1>
 
   <div class="profile-center">
     <div class="profile-wrap">
@@ -34,45 +34,47 @@
 
           <!-- DATOS DEL PERFIL -->
           <div class="field-row">
-            <label for="nombre">{% if idioma == "Inglés" %}Name{% else %}Nombre{% endif %}</label>
+            <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" value="{{ nombre }}">
           </div>
 
           <div class="field-row">
-            <label for="mensaje">{% if idioma == "Inglés" %}Welcome Message{% else %}Mensaje de bienvenida{% endif %}</label>
+            <label for="mensaje">Mensaje de bienvenida</label>
             <textarea id="mensaje" name="mensaje" rows="3">{{ mensaje }}</textarea>
+          </div>
+
+          <!-- GÉNERO -->
+          <div class="field-row">
+            <label for="genero">Género</label>
+            <select id="genero" name="genero">
+              <option value="Masculino" {% if genero == "Masculino" %}selected{% endif %}>Masculino</option>
+              <option value="Femenino" {% if genero == "Femenino" %}selected{% endif %}>Femenino</option>
+              <option value="Otro" {% if genero == "Otro" %}selected{% endif %}>Otro</option>
+            </select>
           </div>
 
           <div class="two-col">
             <div class="field-row">
-              <label for="idioma">{% if idioma == "Inglés" %}Language{% else %}Idioma{% endif %}</label>
-              <select id="idioma" name="idioma">
-                <option {% if idioma == "Español" %}selected{% endif %}>Español</option>
-                <option {% if idioma == "Inglés" %}selected{% endif %}>Inglés</option>
-              </select>
-            </div>
-
-            <div class="field-row">
-              <label for="hora">{% if idioma == "Inglés" %}Time format{% else %}Formato de hora{% endif %}</label>
+              <label for="hora">Formato de hora</label>
               <select id="hora" name="hora">
                 <option {% if hora == "24h" %}selected{% endif %}>24h</option>
                 <option {% if hora == "12h (AM/PM)" %}selected{% endif %}>12h (AM/PM)</option>
               </select>
             </div>
-          </div>
 
-          <div class="two-col">
             <div class="field-row">
-              <label for="pais">{% if idioma == "Inglés" %}Country{% else %}País{% endif %}</label>
+              <label for="pais">País</label>
               <select id="pais" name="pais">
                 <option {% if pais == "Colombia" %}selected{% endif %}>Colombia</option>
                 <option {% if pais == "México" %}selected{% endif %}>México</option>
                 <option {% if pais == "España" %}selected{% endif %}>España</option>
               </select>
             </div>
+          </div>
 
+          <div class="two-col">
             <div class="field-row">
-              <label for="zona">{% if idioma == "Inglés" %}Time zone{% else %}Zona horaria{% endif %}</label>
+              <label for="zona">Zona horaria</label>
               <select id="zona" name="zona">
                 <option {% if zona == "UTC -5 Bogotá" %}selected{% endif %}>UTC -5 Bogotá</option>
                 <option {% if zona == "UTC -6 Ciudad de México" %}selected{% endif %}>UTC -6 Ciudad de México</option>
@@ -81,9 +83,21 @@
             </div>
           </div>
 
-          <div class="form-buttons">
-            <button type="submit" class="btn-primary">{{ text.save }}</button>
-            <button type="button" class="btn-outline">{{ text.cancel }}</button>
+          <!-- BOTONES -->
+          <div class="form-buttons" style="display: flex; justify-content: space-between; align-items: center;">
+
+            <!-- izquierda -->
+            <div>
+              <button type="submit" class="btn-primary">Guardar</button>
+              <button type="button" class="btn-outline">Cancelar</button>
+            </div>
+
+            <!-- derecha -->
+            <button type="submit" name="delete_account" class="btn-danger" 
+              style="padding: 10px 18px; font-weight: bold;">
+              Eliminar cuenta
+            </button>
+
           </div>
         </form>
 
