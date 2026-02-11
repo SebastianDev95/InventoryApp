@@ -1,7 +1,5 @@
 from django.db import models
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
+from django.contrib.auth.models import User
 
 class Product(models.Model):
     STATUS_CHOICES = [
@@ -12,7 +10,6 @@ class Product(models.Model):
     
     name = models.CharField(max_length=200, verbose_name='Nombre del producto')
     category = models.CharField(max_length=100, verbose_name='Categoría')
-    quantity = models.IntegerField(default=0, verbose_name='Cantidad')
     stock = models.IntegerField(default=0, verbose_name='Stock')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio')
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='active', verbose_name='Estado')
@@ -28,8 +25,21 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    # --- COMPATIBILIDAD ---
+    @property
+    def quantity(self):
+        """Permite que producto.quantity siga funcionando devolviendo el stock"""
+        return self.stock
+
+    @quantity.setter
+    def quantity(self, value):
+        """Permite que si algo intenta guardar en .quantity, se guarde en .stock"""
+        self.stock = value
+    # ----------------------
+
     def save(self, *args, **kwargs):
-        if self.stock == 0:
+        # Lógica de estados basada solo en stock
+        if self.stock <= 0:
             self.status = 'out_of_stock'
         elif self.stock <= 10:
             self.status = 'low_stock'

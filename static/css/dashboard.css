@@ -182,6 +182,11 @@ input:checked + .slider:before {
     color: #6b5ce7;
 }
 
+.stat-icon.red{
+    background: #eed8d8;
+    color: #df2b2b;
+}
+
 .stat-icon.yellow {
     background: #fff4e5;
     color: #f59e0b;

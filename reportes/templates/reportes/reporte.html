@@ -10,40 +10,56 @@
 <main class="main-content reportes-page">
     <h1 class="page-title">Reportes de Inventario</h1>
 
-    <!-- Estadísticas principales -->
-    <div class="stats-grid">
-        <div class="stat-card red">
-            <img src="{% static 'img/warning.svg' %}" alt="Productos críticos" class="stat-icon">
-            <div>
-                <p class="stat-label">Productos Críticos</p>
-                <p class="stat-value">{{ count_criticos|default:0 }}</p>
-            </div>
-        </div>
-
-        <div class="stat-card yellow">
-            <img src="{% static 'img/bajo.svg' %}" alt="Bajo stock" class="stat-icon">
-            <div>
-                <p class="stat-label">Bajo Stock</p>
-                <p class="stat-value">{{ count_bajo_stock|default:0 }}</p>
-            </div>
-        </div>
-
-        <div class="stat-card green">
-            <img src="{% static 'img/dolar.svg' %}" alt="Valor en riesgo" class="stat-icon">
-            <div>
-                <p class="stat-label">Valor en Riesgo</p>
-                <p class="stat-value">$ {{ valor_en_riesgo|default:0 }}</p>
-            </div>
-        </div>
-
-        <div class="stat-card blue">
-            <img src="{% static 'img/cuadro.svg' %}" alt="Categorías" class="stat-icon">
-            <div>
-                <p class="stat-label">Total de Categorías</p>
-                <p class="stat-value">{{ total_categorias|default:0 }}</p>
-            </div>
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon red">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+            </svg>
+           </div>
+        <div>
+            <p class="stat-label">Productos Críticos</p>
+            <p class="stat-value">{{ count_criticos|default:0 }}</p>
         </div>
     </div>
+
+    <div class="stat-card">
+        <div class="stat-icon yellow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+            </svg>
+        </div>
+        <div>
+            <p class="stat-label">Bajo Stock</p>
+            <p class="stat-value">{{ count_bajo_stock|default:0 }}</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+        </div>
+        <div>
+            <p class="stat-label">Valor en Riesgo</p>
+            <p class="stat-value">$ {{ valor_en_riesgo|default:0 }}</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            </svg>
+        </div>
+        <div>
+            <p class="stat-label">Total de Categorías</p>
+            <p class="stat-value">{{ total_categorias|default:0 }}</p>
+        </div>
+    </div>
+</div>
 
     <!-- Reportes principales -->
     <div class="reports-grid">
@@ -51,7 +67,11 @@
         <!-- Reporte: Stock bajo -->
         <div class="report-card report-left">
             <div class="card-header">
-                <img src="{% static 'img/warning.svg' %}" alt="Alerta" class="card-icon">
+            <div class="stat-icon red">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+            </svg>
+           </div>    
                 <h2>Reporte de Stock Bajo</h2>
             </div>
             <p class="subtitle">Productos que requieren reabastecimiento</p>

@@ -3,26 +3,30 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Sum
-
 from .models import Product
 from .forms import ProductoForm
-
+from django.db.models import Sum, F, ExpressionWrapper, DecimalField
 
 @login_required
 def Dashboard(request):
     productos = Product.objects.filter(created_by=request.user)
     
     total_productos = productos.count()
-    stock_bajo = productos.filter(status__in=['low_stock', 'out_of_stock']).count() # Mejor filtro
+    stock_bajo = productos.filter(status__in=['low_stock', 'out_of_stock']).count()
     
-    # Asegúrate de que los tipos de datos sean compatibles para la suma
-    # Si 'price' es DecimalField y 'stock' es IntegerField, la multiplicación es segura.
-    valor_total_queryset = productos.aggregate(total_value=Sum('price', field='price * stock'))
-    valor_total = valor_total_queryset['total_value'] if valor_total_queryset['total_value'] is not None else 0
+    # Calculamos el valor total multiplicando stock * precio por cada fila
+    valor_total_queryset = productos.annotate(
+        valor_por_producto=ExpressionWrapper(
+            F('price') * F('stock'), 
+            output_field=DecimalField()
+        )
+    ).aggregate(total_value=Sum('valor_por_producto'))
+
+    valor_total = valor_total_queryset['total_value'] or 0
     
     productos_activos = productos.filter(status='active').count()
-
+    
+    # ... resto de tu lógica de retorno
     context = {
         'productos': productos,
         'total_productos': total_productos,
@@ -37,11 +41,13 @@ def nuevo_producto(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST)
         if form.is_valid():
-            nuevo_producto = form.save(commit=False)
-            nuevo_producto.created_by = request.user
-            nuevo_producto.save() # El método save() del modelo actualizará el estado
-            messages.success(request, 'Producto añadido exitosamente.')
-            return redirect('dashboard')
+            # Guardamos temporalmente para añadir el usuario
+            producto = form.save(commit=False)
+            producto.created_by = request.user 
+            producto.save()
+            
+            messages.success(request, '¡Producto creado!')
+            return redirect('dashboard') # Asegúrate que 'dashboard' sea el nombre en urls.py
     else:
         form = ProductoForm()
         

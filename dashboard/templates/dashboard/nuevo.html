@@ -1,60 +1,54 @@
 {% extends 'dashboard/home.html' %}
 {% load static %}
-    
+
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/editar.css' %}">
 {% endblock %}
 
 {% block content %}
-    <main class="main-content">
-        <div class="form-container">
-            <div class="form-card">
-                <div class="form-header">
-                    <h2>CREAR NUEVO PRODUCTO</h2>
-                    <p>COMPLETE LA INFORMACION PARA AGREGAR UN PRODUCTO</p>
+<main class="main-content">
+    <div class="form-container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
                 </div>
+            {% endfor %}
+        {% endif %}
 
-                <form id="newProductForm" class="product-form" method="POST">
-                    {% csrf_token %}
-
-                    {% if form.non_field_errors %}
-                        <div class="form-errors">
-                            {{ form.non_field_errors }}
-                        </div>
-                    {% endif %}
-
-                    <div class="form-group">
-                        <label for="{{ form.name.id_for_label }}">Nombre del producto</label>
-                        {{ form.name }}
-                        {{ form.name.errors }}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="{{ form.quantity.id_for_label }}">Cantidad</label>
-                        {{ form.quantity }}
-                        {{ form.quantity.errors }}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="{{ form.category.id_for_label }}">Categoría</label>
-                        {{ form.category }}
-                        {{ form.category.errors }}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="{{ form.price.id_for_label }}">Precio</label>
-                        {{ form.price }}
-                        {{ form.price.errors }}
-                    </div>
-
-
-                    <div class="form-actions">
-                        <button type="submit" class="btn-submit">CREAR NUEVO PRODUCTO</button>
-                        <button type="button" class="btn-cancel" 
-            data-url="{% url 'dashboard' %}">CANCELAR</button>
-                    </div>
-                </form>
+        <div class="form-card">
+            <div class="form-header">
+                <h2>CREAR NUEVO PRODUCTO</h2>
+                <p>COMPLETE LA INFORMACIÓN PARA AGREGAR UN PRODUCTO</p>
             </div>
+
+            <form id="newProductForm" class="product-form" method="POST">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    <div class="form-errors">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <span class="error-text">{{ field.errors|striptags }}</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">CREAR NUEVO PRODUCTO</button>
+                    <button type="button" class="btn-cancel" 
+            data-url="{% url 'dashboard' %}">CANCELAR</button>
+                    </button>
+                </div>
+            </form>
         </div>
-    </main>
+    </div>
+</main>
 {% endblock %}
